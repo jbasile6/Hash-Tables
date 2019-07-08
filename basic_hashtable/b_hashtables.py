@@ -51,7 +51,9 @@ def hash_table_insert(hash_table, key, value):
 # If you try to remove a value that isn't there, print a warning.
 # '''
 def hash_table_remove(hash_table, key):
-    pass
+    temp = hash(key, hash_table.capacity)
+    if hash_table.storage[temp] is not None:
+        hash_table.storage[temp] = None
 
 
 # '''
@@ -70,14 +72,13 @@ def Testing():
 
     hash_table_insert(ht, "line", "Here today...\n")
 
-    # hash_table_remove(ht, "line")
+    hash_table_remove(ht, "line")
 
-    # if hash_table_retrieve(ht, "line") is None:
-    #     print("...gone tomorrow (success!)")
-    # else:
-    #     print("ERROR:  STILL HERE")
+    if hash_table_retrieve(ht, "line") is None:
+        print("...gone tomorrow (success!)")
+    else:
+        print("ERROR:  STILL HERE")
 
-    print(hash_table_retrieve(ht, "line"))
 
 
 
